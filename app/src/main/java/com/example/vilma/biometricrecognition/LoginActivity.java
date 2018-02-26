@@ -169,7 +169,7 @@ public class LoginActivity extends BaseActivity implements TakePicFragment.Pictu
             bundle.putString("Username", txtUsername);
             intentBundle.putExtras(bundle);
             startActivity(intentBundle);
-
+            finish();
             /*ComparePictures j = new ComparePictures(this, source, target, this);
             j.execute();
             try {

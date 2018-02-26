@@ -82,10 +82,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_logout:
                 Intent intentLogout = new Intent(BaseActivity.this,LoginActivity.class);
                 startActivity(intentLogout);
-
-                //Also need to reset all the user info and close all the activities opened, just leave login
-
+                BaseActivity.this.finish();
                 break;
+                //Also need to reset all the user info and close all the activities opened, just leave login
 
         }
 

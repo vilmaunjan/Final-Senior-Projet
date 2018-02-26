@@ -103,6 +103,7 @@ public class ThisYouActivity extends BaseActivity{
                 bundle.putString("Username", txtUsername);
                 registerIntent.putExtras(bundle);
                 startActivity(registerIntent);
+                finish();
 
                 //Use sharedPreferences to pass data to another activities without starting the other activity
                 SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
