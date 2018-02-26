@@ -11,14 +11,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-//This class is the DB GETTER AND SETTER
-
 @DynamoDBTable(tableName = "biometricscanner-mobilehub-1770537756-Accounts")
 
 public class AccountsDO {
     private String _userId;
     private String _firstName;
     private String _lastName;
+    private String _password;
     private String _pic1;
     private String _pic2;
     private Set<String> _picLog;
@@ -47,6 +46,14 @@ public class AccountsDO {
 
     public void setLastName(final String _lastName) {
         this._lastName = _lastName;
+    }
+    @DynamoDBAttribute(attributeName = "Password")
+    public String getPassword() {
+        return _password;
+    }
+
+    public void setPassword(final String _password) {
+        this._password = _password;
     }
     @DynamoDBAttribute(attributeName = "Pic1")
     public String getPic1() {
