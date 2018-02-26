@@ -39,6 +39,8 @@ public class Register extends BaseActivity implements TakePicFragment.PictureTak
     String txtUsername;
     EditText txtFirstnameBox;
     EditText txtLastnameBox;
+    EditText txtPasswordBox;
+
     Button btnRegister;
 
     String[] dataUser= new String[5];
@@ -66,6 +68,8 @@ public class Register extends BaseActivity implements TakePicFragment.PictureTak
         btnRegister = (Button) findViewById(R.id.btnRegister);
         txtFirstnameBox = (EditText) findViewById(R.id.txtFirstname);
         txtLastnameBox = (EditText) findViewById(R.id.txtLastname);
+        txtPasswordBox = (EditText) findViewById(R.id.txtPassWord);
+
 
 
         btnRegister.setOnClickListener(new View.OnClickListener(){
@@ -85,26 +89,30 @@ public class Register extends BaseActivity implements TakePicFragment.PictureTak
             dataUser[0] = txtUsernameBox.getText().toString();
             dataUser[1] = txtFirstnameBox.getText().toString();
             dataUser[2] = txtLastnameBox.getText().toString();
+            dataUser[3] = txtPasswordBox.getText().toString();
             if (txtUsername.equals("") || txtUsername.toString().equals("Enter a Username")
-                    ||dataUser[1].equals("") || dataUser[1].toString().equals("Enter a Username")
-                    ||dataUser[2].equals("") || dataUser[2].toString().equals("Enter a Username")) {
-                Toast.makeText(this, "Please enter every field", Toast.LENGTH_LONG).show();
+                    ||dataUser[1].equals("") || dataUser[1].toString().equals("Enter First Name")
+                    ||dataUser[2].equals("") || dataUser[2].toString().equals("Enter Last Name")
+                    ||dataUser[3].toString().equals("") || dataUser[3].toString().equals("Enter Password")) {
+                Toast.makeText(this, "Please enter all field", Toast.LENGTH_LONG).show();
             }else{
-                DbManager.checkTable checkTable = new DbManager.checkTable(this, txtUsername,this);
-                checkTable.execute();
-                try {
-                    checkTable.get();
-                } catch (InterruptedException e) {
-                    Toast.makeText(this, "Interrupted Exception", Toast.LENGTH_LONG).show();
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    Toast.makeText(this, "Execution Exception", Toast.LENGTH_LONG).show();
-                    e.printStackTrace();
-                }
+
+                    DbManager.checkTable checkTable = new DbManager.checkTable(this, txtUsername, this);
+                    checkTable.execute();
+                    try {
+                        checkTable.get();
+                    } catch (InterruptedException e) {
+                        Toast.makeText(this, "Interrupted Exception", Toast.LENGTH_LONG).show();
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        Toast.makeText(this, "Execution Exception", Toast.LENGTH_LONG).show();
+                        e.printStackTrace();
+                    }
+
             }
 
         }else{
-            Toast.makeText(this, "Please take a picture first and enter a username!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Please take a picture or enter all fields", Toast.LENGTH_LONG).show();
         }
     }
 

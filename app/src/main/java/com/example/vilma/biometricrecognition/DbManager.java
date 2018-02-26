@@ -37,6 +37,7 @@ public class DbManager {
         String txtUsername;
         String txtFirstname;
         String txtLastname;
+        String txtPassword;
 
         // Save the context received via constructor in a local variable
         // it also saves the activity of the current view
@@ -45,6 +46,7 @@ public class DbManager {
             txtUsername = Username[0];
             txtFirstname = Username[1];
             txtLastname = Username[2];
+            txtPassword = Username[3];
 
         }
 
@@ -66,6 +68,7 @@ public class DbManager {
             PaginatedList<AccountsDO> result = dynamoDBMapper.query(AccountsDO.class, queryExpression);
             accountsDo.setFirstName(txtFirstname);
             accountsDo.setLastName(txtLastname);
+            accountsDo.setPassword(txtPassword);
             accountsDo.setPic1(txtUsername+"_prime.jpg");
             // it creates new item in DynamoDB
             dynamoDBMapper.save(accountsDo);
@@ -79,6 +82,7 @@ public class DbManager {
 
     public static class checkTable extends AsyncTask<String, Void, Boolean> {
         String txtUsername;
+        String txtPassword;
         String[] dataUser = new String[5];
 
         public static boolean loginFlag;
@@ -91,9 +95,10 @@ public class DbManager {
             rObj = obj;
         }
 
-        public checkTable(Context context, String Username, LoginActivity obj) {
+        public checkTable(Context context, String[] Userdata, LoginActivity obj) {
             currentContext = context;
-            txtUsername = Username;
+            txtUsername = Userdata[0];
+            txtPassword= Userdata[1];
             lObj = obj;
         }
 
@@ -118,13 +123,18 @@ public class DbManager {
             // if not in the database its going to ask to prompt again
             if (result.isEmpty()) {//Unsuccessful
                 loginFlag = false;
-            } else { //Success
-               DbManager.prime_pic =result.get(0).getPic1();
-               dataUser[0] = result.get(0).getUserId();
-               dataUser[1] = result.get(0).getFirstName();
-               dataUser[2] = result.get(0).getLastName();
-
-                loginFlag = true;
+            } else { //There was a user name with that name;
+                if (txtPassword.equals(result.get(0).getPassword())) {
+                    DbManager.prime_pic = result.get(0).getPic1();
+                    dataUser[0] = result.get(0).getUserId();
+                    dataUser[1] = result.get(0).getFirstName();
+                    dataUser[2] = result.get(0).getLastName();
+                    dataUser[3] = result.get(0).getPassword();
+                    loginFlag = true;
+                }
+                else{
+                    loginFlag = false;
+                }
             }
             return loginFlag;
         }

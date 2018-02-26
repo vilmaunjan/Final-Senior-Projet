@@ -39,10 +39,14 @@ public class LoginActivity extends BaseActivity implements TakePicFragment.Pictu
     String fragPhotoFilePath;
     TextView txtSignup;
     EditText txtUsernameBox;
+    EditText txtPasswordBox;
     Button btnLogin;
+    String[] Userdata = new String[2];
     String txtUsername;
     String txtFirstname;
     String txtLastname;
+    String txtPassword;
+    String txtRePassword;
     boolean requirSatisfied;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     String source;
@@ -69,6 +73,7 @@ public class LoginActivity extends BaseActivity implements TakePicFragment.Pictu
 
     private void initUI() {
         txtUsernameBox = (EditText) findViewById(R.id.txtUsername);
+        txtPasswordBox = (EditText) findViewById(R.id.txtPassWord);
         txtSignup = (TextView) findViewById(R.id.txtSignup);
         btnLogin = (Button) findViewById(R.id.button2);
 
@@ -91,12 +96,16 @@ public class LoginActivity extends BaseActivity implements TakePicFragment.Pictu
     }
 
     private void tryToUpload(View v) {
-        if(fragPhotoFilePath != null){
+   //     if(fragPhotoFilePath != null){
             txtUsername = txtUsernameBox.getText().toString();
-            if (txtUsername.equals("") || txtUsername.toString().equals("Enter a Username")) {
-                Toast.makeText(this, "Please enter a valid username", Toast.LENGTH_LONG).show();
+            txtPassword = txtPasswordBox.getText().toString();
+            Userdata[0] = txtUsername;
+            Userdata[1] = txtPassword;
+            if (txtUsername.equals("") || txtUsername.toString().equals("Enter a Username")
+                    || txtPassword.equals("") || txtPassword.toString().equals("Enter Password")) {
+                Toast.makeText(this, "Please enter a valid username or Password", Toast.LENGTH_LONG).show();
             }else{
-                DbManager.checkTable checkTable = new DbManager.checkTable(this, txtUsername,this);
+                DbManager.checkTable checkTable = new DbManager.checkTable(this, Userdata,this);
                 checkTable.execute();
                 try {
                     checkTable.get();
@@ -109,14 +118,15 @@ public class LoginActivity extends BaseActivity implements TakePicFragment.Pictu
                 }
             }
 
-        }else{
-            Toast.makeText(this, "Please take a picture first and enter a username!", Toast.LENGTH_LONG).show();
-        }
+//        }else{
+//            Toast.makeText(this, "Please take a picture first and enter a username!", Toast.LENGTH_LONG).show();
+//        }
     }
 
     public void getUserData(String[] dataUser){
         txtFirstname = dataUser[1];
         txtLastname = dataUser[2];
+        txtRePassword = dataUser[3];
 //        Toast.makeText(this, txtFirstname+","+txtLastname+ "!", Toast.LENGTH_LONG).show();
     }
 
@@ -142,30 +152,31 @@ public class LoginActivity extends BaseActivity implements TakePicFragment.Pictu
         requirSatisfied = result;
         if(requirSatisfied){
             //Toast.makeText(this, "check done", Toast.LENGTH_LONG).show();
-            File file = new File(fragPhotoFilePath);
-            String target = txtUsername + "_" + file.getName();
-            String source = txtUsername + "_prime.jpg";
+//            File file = new File(fragPhotoFilePath);
+//            String target = txtUsername + "_" + file.getName();
+//            String source = txtUsername + "_prime.jpg";
+//
+//            S3Upload upload = new S3Upload(this, fragPhotoFilePath, target);
+//            upload.execute();
 
-            S3Upload upload = new S3Upload(this, fragPhotoFilePath, target);
-            upload.execute();
+//            try {
+//                upload.get();
+//            } catch (InterruptedException e) {
+//                Toast.makeText(this, "IM SORRY vilma", Toast.LENGTH_LONG).show();
+//                e.printStackTrace();
+//            } catch (ExecutionException e) {
+//                Toast.makeText(this, "IM SORRY gabe", Toast.LENGTH_LONG).show();
+//                e.printStackTrace();
+//            }
 
-            try {
-                upload.get();
-            } catch (InterruptedException e) {
-                Toast.makeText(this, "IM SORRY vilma", Toast.LENGTH_LONG).show();
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                Toast.makeText(this, "IM SORRY gabe", Toast.LENGTH_LONG).show();
-                e.printStackTrace();
-            }
 
-            Intent intentBundle = new Intent(LoginActivity.this,ThisYouActivity.class);
+            Intent intentBundle = new Intent(LoginActivity.this,HomeActivity.class);
             Bundle bundle = new Bundle();
             bundle.putString("FirstName", txtFirstname);
             bundle.putString("LastName", txtLastname);
-            bundle.putString("PhotoPath", fragPhotoFilePath);
-            bundle.putString("Target",target);
-            bundle.putString("Source",source);
+//            bundle.putString("PhotoPath", fragPhotoFilePath);
+//            bundle.putString("Target",target);
+//            bundle.putString("Source",source);
             bundle.putString("Username", txtUsername);
             intentBundle.putExtras(bundle);
             startActivity(intentBundle);
@@ -184,6 +195,8 @@ public class LoginActivity extends BaseActivity implements TakePicFragment.Pictu
             */
 
         }else{
+            Toast.makeText(this, "Please enter a correct Username or Password!"
+                    , Toast.LENGTH_SHORT).show();
             Toast.makeText(this, "Please enter your username or register a new account!"
                     , Toast.LENGTH_SHORT).show();
 
