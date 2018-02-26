@@ -3,5 +3,24 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="we_need_a_picture">We need a picture!</string>
+    <string name="city_prompt">Choose a city</string>
+    <string name="car_prompt">Choose a car</string>
+
+    <string-array name="city_arrays">
+        <item>Fort Myers</item>
+        <item>Miami</item>
+        <item>Fort Lauderdale</item>
+    </string-array>
+
+    <string-array name="car_arrays">
+        <item>Full-size</item>
+        <item>Mid-size</item>
+        <item>Compact</item>
+    </string-array>
+
+    <string-array name="ap_arrays">
+        <item>AM</item>
+        <item>PM</item>
+    </string-array>
 
 </resources>

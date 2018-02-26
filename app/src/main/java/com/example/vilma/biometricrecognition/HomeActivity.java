@@ -23,6 +23,7 @@ public class HomeActivity extends BaseActivity {
 
     Button btnAccount;
     Button btnCheckout;
+    Button btnRent;
     TextView usernameTxtView;
     String txtFirstname;
     String txtLastname;
@@ -42,6 +43,7 @@ public class HomeActivity extends BaseActivity {
     private void initUI() {
         btnAccount = (Button) findViewById(R.id.btnAccount);
         btnCheckout = (Button) findViewById(R.id.btnCheckout);
+        btnRent = (Button) findViewById(R.id.btnRent);
         usernameTxtView = findViewById(R.id.txtName);
 
         Intent intentExtras = getIntent();
@@ -73,6 +75,14 @@ public class HomeActivity extends BaseActivity {
                 //ComparePictures j = new ComparePictures(HomeActivity.this,"My_Face.jpg", "My_Face2.jpg");
                 //j.execute();
                 //ComparePictures.comparePic(HomeActivity.this,"My_Face.jpg", "My_Face2.jpg");
+            }
+        });
+
+        btnRent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentRent = new Intent(HomeActivity.this,CheckoutActivity.class);
+                startActivity(intentRent);
             }
         });
     }
