@@ -4,229 +4,257 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/car"
+    android:background="@color/colorWhite"
     android:orientation="vertical">
 
+
+    <TextView
+        android:id="@+id/lblB"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:background="@drawable/ny"
+        android:gravity="bottom"
+        android:paddingBottom="10dp"
+        android:paddingStart="10dp"
+        android:text="Book Reservation"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="30sp" />
+
     <ScrollView
-        android:layout_width="320dp"
-        android:layout_height="800dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <GridLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/lblBook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Book"
-                android:textAllCaps="false"
-                android:textColor="@color/colorAccent"
-                android:textSize="30sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/lblReservation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:layout_row="0"
-                android:text="Reservation"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="30sp" />
+                <TextView
+                    android:id="@+id/txtPickup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pick-up Location"
+                    android:textColor="@color/colorPrimaryDark" />
 
-            <TextView
-                android:id="@+id/lblLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
+                <Spinner
+                    android:id="@+id/spinnerPickupLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorOpaque"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:entries="@array/city_arrays"
+                    android:popupBackground="@color/colorOpaque"
+                    android:prompt="@string/city_prompt" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Drop-off Location"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <Spinner
+                    android:id="@+id/spinnerDropoffLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorOpaque"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:entries="@array/city_arrays"
+                    android:popupBackground="@color/colorOpaque"
+                    android:prompt="@string/city_prompt" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="25dp"
+                    android:layout_weight="1"
+                    android:text="Pick-Up"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_weight="1"
+                    android:text="Drop-off"
+                    android:textColor="@color/colorPrimaryDark" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/pickMonth"
+                    android:layout_width="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorOpaque"
+                    android:entries="@array/month_arrays" />
+
+                <Spinner
+                    android:id="@+id/pickDay"
+                    android:layout_width="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorOpaque"
+                    android:entries="@array/day_arrays" />
+
+                <Spinner
+                    android:id="@+id/pickYear"
+                    android:layout_width="15dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorOpaque"
+                    android:entries="@array/year_arrays" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="15dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center_horizontal|center"
+                    android:text="---->"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <Spinner
+                    android:id="@+id/dropMonth"
+                    android:layout_width="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorOpaque"
+                    android:entries="@array/month_arrays" />
+
+                <Spinner
+                    android:id="@+id/dropDay"
+                    android:layout_width="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorOpaque"
+                    android:entries="@array/day_arrays" />
+
+                <Spinner
+                    android:id="@+id/dropYear"
+                    android:layout_width="15dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorOpaque"
+                    android:entries="@array/year_arrays" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/timePickup"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Spinner
+                    android:id="@+id/spinner1"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorOpaque"
+                    android:entries="@array/ap_arrays" />
+
+                <Spinner
+                    android:id="@+id/timeDropoff"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_weight="1" />
+
+                <Spinner
+                    android:id="@+id/spinner2"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorOpaque"
+                    android:entries="@array/ap_arrays" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_row="1"
-                android:background="@color/colorPrimary"
-                android:text="Location:"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/lblCity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_row="2"
-                android:text="City"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/txtCity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:layout_row="2"
-                android:background="@color/colorOpaque"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Enter pickup city" />
-
-            <TextView
-                android:id="@+id/lblLocation2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_row="3"
-                android:text="Location"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
-
-            <Spinner
-                android:id="@+id/spinnerLocation"
-                android:layout_width="215dp"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:layout_row="3"
-                android:background="@color/colorOpaque"
-                android:backgroundTint="@color/colorPrimary"
-                android:entries="@array/city_arrays"
-                android:popupBackground="@color/colorOpaque"
-                android:prompt="@string/city_prompt" />
-
-            <TextView
-                android:id="@+id/lblCarType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="30dp"
-                android:layout_row="4"
-                android:background="@color/colorPrimary"
-                android:text="Car Type:"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/lblCar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_row="5"
-                android:text="Car"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
-
-            <Spinner
-                android:id="@+id/spinnerCarType"
-                android:layout_width="215dp"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:layout_row="5"
-                android:background="@color/colorOpaque"
-                android:backgroundTint="@color/colorPrimary"
-                android:entries="@array/car_arrays"
-                android:popupBackground="@color/colorOpaque"
-                android:prompt="@string/car_prompt"/>
-
-            <TextView
-                android:id="@+id/lblTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_row="6"
-                android:background="@color/colorPrimary"
-                android:text="Time:"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/lblCheckout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_row="7"
-                android:text="Check-out: "
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_column="1"
-                android:layout_row="7"
-                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Car Type"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <Spinner
-                    android:id="@+id/spinnerCheckoutTime"
-                    android:layout_width="90dp"
+                    android:id="@+id/spinnerCarType"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp" />
-
-                <Spinner
-                    android:id="@+id/spinnerAP1"
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:background="@color/colorOpaque"
-                    android:entries="@array/ap_arrays" />
-
+                    android:backgroundTint="@color/colorPrimary"
+                    android:entries="@array/car_arrays"
+                    android:popupBackground="@color/colorOpaque"
+                    android:prompt="@string/car_prompt" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/lblDropoff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_row="8"
-                android:text="Drop-off: "
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
-
-            <LinearLayout
+            <Button
+                android:id="@+id/btnReserve"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_column="1"
-                android:layout_row="8"
-                android:orientation="horizontal">
-
-                <Spinner
-                    android:id="@+id/spinnerDropoffTime"
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp" />
-
-                <Spinner
-                    android:id="@+id/spinnerAP2"
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:background="@color/colorOpaque"
-                    android:entries="@array/ap_arrays" />
-
-            </LinearLayout>
-
-        </GridLayout>
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:text="Reserve"
+                android:textColor="@color/colorPrimaryDark" />
 
 
+
+        </LinearLayout>
     </ScrollView>
 
 

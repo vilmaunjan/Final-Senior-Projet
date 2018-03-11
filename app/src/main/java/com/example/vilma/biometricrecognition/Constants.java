@@ -25,7 +25,7 @@ public class Constants {
      * You should replace these values with your own. See the README for details
      * on what to fill in.
      */
-    public static final String COGNITO_POOL_ID = "us-east-1:f91fe70a-8228-4626-bde6-16d470fb6358";
+    public static final String COGNITO_POOL_ID = "us-east-1:4caa855e-f500-45fd-bfd8-308a68f4a568";
     //public static final String COGNITO_POOL_ID = "us-east-1:5721923b-5e19-4ba7-a4df-9f83b5f1582d";
 
     /*
@@ -38,7 +38,7 @@ public class Constants {
      * the sample (https://console.aws.amazon.com/s3/). After creating a bucket,
      * put it's name in the field below.
      */
-    public static final String BUCKET_NAME = "jeffstestingbucket";
+    public static final String BUCKET_NAME = "licenserekog";
 
     /*
      * Region of your bucket.
@@ -48,11 +48,11 @@ public class Constants {
     /*
      * S3 user access id
      */
-    public static final String ACCESS_KEY_ID = "AKIAIILW4B6OG54CWQNA";
+    public static final String ACCESS_KEY_ID = "AKIAJDPRT2QLYXYUN3YA";
 
     /*
      * s3 user SECRET access key
      */
-    public static final String SECRET_ACCESS_KEY_= "1p1mbBS6n2bLm9wTAzmbI2E09xD/qeCkzYEpEFzd";
+    public static final String SECRET_ACCESS_KEY_= "hxyQVLOXj9cU1p7JdyteMWmJlR8hk/ax354yhuRq";
 
 }

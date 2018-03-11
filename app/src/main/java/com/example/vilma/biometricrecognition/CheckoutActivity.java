@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Spinner;
@@ -18,15 +19,35 @@ import java.util.List;
 
 public class CheckoutActivity extends BaseActivity {
 
-    EditText txtCity;
-    String city;
-    String car;
-    String location;
-    Spinner spinnerLocation;
+    Spinner spinnerPickupLocation;
+    String pickupLocation;
+    Spinner spinnerDropoffLocation;
+    String dropoffLocation;
     Spinner spinnerCar;
+    String car;
+    Spinner pickupDay;
+    String pickDay;
+    Spinner pickupMonth;
+    String pickMonth;
+    Spinner pickupYear;
+    String pickYear;
+    String pickDate;
+    Spinner dropoffDay;
+    String dropDay;
+    Spinner dropoffMonth;
+    String dropMonth;
+    Spinner dropoffYear;
+    String dropYear;
+    String dropDate;
+    Button reserve;
+
 
     ArrayAdapter<CharSequence> adapterLocation;
     ArrayAdapter<CharSequence> adapterCar;
+    ArrayAdapter<CharSequence> adapterDay;
+    ArrayAdapter<CharSequence> adapterMonth;
+    ArrayAdapter<CharSequence> adapterYear;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,52 +56,164 @@ public class CheckoutActivity extends BaseActivity {
         getLayoutInflater().inflate(R.layout.activity_checkout, contentFrameLayout);
         //setContentView(R.layout.activity_checkout);
 
-
         initUI();
     }
 
 
     private void initUI() {
 
-        txtCity = (EditText) findViewById(R.id.txtCity);
-/*
-        spinnerLocation = (Spinner) findViewById(R.id.spinnerLocation);
+        //Used for location spinners
         adapterLocation = ArrayAdapter.createFromResource(this, R.array.city_arrays, android.R.layout.simple_spinner_item);
         adapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerLocation.setAdapter(adapterLocation);
-        spinnerLocation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        //Get pickup location
+        spinnerPickupLocation = (Spinner) findViewById(R.id.spinnerPickupLocation);
+        spinnerPickupLocation.setAdapter(adapterLocation);
+        spinnerPickupLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getBaseContext(),parent.getItemAtPosition(position)+" selected", Toast.LENGTH_LONG).show();
-                location = parent.getSelectedItem().toString();
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                pickupLocation = parent.getSelectedItem().toString();
+                //Toast.makeText(getBaseContext(),pickupLocation+" selected", Toast.LENGTH_LONG).show();
             }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
 
+        //Get dropoff Location
+        spinnerDropoffLocation = (Spinner) findViewById(R.id.spinnerDropoffLocation);
+        spinnerDropoffLocation.setAdapter(adapterLocation);
+        spinnerDropoffLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                dropoffLocation = parent.getSelectedItem().toString();
+                //Toast.makeText(getBaseContext(),dropoffLocation+" selected", Toast.LENGTH_LONG).show();
+            }
 
-        spinnerCar = (Spinner) findViewById(R.id.spinnerCarType);
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        //Get car type
         adapterCar = ArrayAdapter.createFromResource(this, R.array.car_arrays, android.R.layout.simple_spinner_item);
         adapterCar.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerCar = (Spinner) findViewById(R.id.spinnerCarType);
         spinnerCar.setAdapter(adapterCar);
-        spinnerCar.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        spinnerCar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getBaseContext(),parent.getItemAtPosition(position)+" selected", Toast.LENGTH_LONG).show();
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 car = parent.getSelectedItem().toString();
+                //Toast.makeText(getBaseContext(),dropoffLocation+" selected", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        //Get date
+        adapterDay = ArrayAdapter.createFromResource(this, R.array.day_arrays, android.R.layout.simple_spinner_item);
+        adapterDay.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        adapterMonth = ArrayAdapter.createFromResource(this, R.array.month_arrays, android.R.layout.simple_spinner_item);
+        adapterMonth.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        adapterYear = ArrayAdapter.createFromResource(this, R.array.year_arrays, android.R.layout.simple_spinner_item);
+        adapterYear.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        pickupDay = (Spinner) findViewById(R.id.pickDay);
+        pickupDay.setAdapter(adapterDay);
+        pickupDay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                pickDay = pickupDay.getSelectedItem().toString();
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+        pickupMonth = (Spinner) findViewById(R.id.pickMonth);
+        pickupMonth.setAdapter(adapterMonth);
+        pickupMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                pickMonth = pickupMonth.getSelectedItem().toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+        pickupYear = (Spinner) findViewById(R.id.pickYear);
+        pickupYear.setAdapter(adapterYear);
+        pickupYear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                pickYear = pickupYear.getSelectedItem().toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        dropoffDay = (Spinner) findViewById(R.id.dropDay);
+        dropoffDay.setAdapter(adapterDay);
+        dropoffDay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                dropDay = dropoffDay.getSelectedItem().toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+        dropoffMonth = (Spinner) findViewById(R.id.dropMonth);
+        dropoffMonth.setAdapter(adapterMonth);
+        dropoffMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                dropMonth = dropoffMonth.getSelectedItem().toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+        dropoffYear = (Spinner) findViewById(R.id.dropYear);
+        dropoffYear.setAdapter(adapterYear);
+        dropoffYear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                dropYear = dropoffYear.getSelectedItem().toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        //initiate button
+        reserve = (Button) findViewById(R.id.btnReserve);
+        reserve.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                storeData();
             }
         });
-*/
     }
-
 
     private void storeData(){
 
-        city = txtCity.getText().toString();
+        pickDate = pickDay+"/"+pickMonth+"/"+pickYear;
+        dropDate = dropDay+"/"+dropMonth+"/"+dropYear;
 
         //Use sharedPreferences to pass data to another activities without starting the other activity
         SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("City", city);
-        editor.putString("Location", location);
+        editor.putString("Pickup location", pickupLocation);
+        editor.putString("Dropoff location", dropoffLocation);
+        editor.putString("Pickup date", pickDate);
+        editor.putString("Dropoff date", dropDate);
+        editor.putString("Car", car);
         editor.commit();
+
+        Toast.makeText(getApplicationContext(), "pickupdate: "+pickDate, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "dropoffdate: "+dropDate, Toast.LENGTH_LONG).show();
+
+
+        Toast.makeText(getApplicationContext(), "Reservation info was stored", Toast.LENGTH_LONG).show();
     }
+
 }

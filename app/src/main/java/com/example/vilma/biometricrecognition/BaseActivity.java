@@ -1,6 +1,7 @@
 package com.example.vilma.biometricrecognition;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -80,6 +81,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intentAccount);
                 break;
             case R.id.nav_logout:
+                //To erase all shared pref values
+                //SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
+                //prefs.edit().clear().commit();
+
                 Intent intentLogout = new Intent(BaseActivity.this,LoginActivity.class);
                 startActivity(intentLogout);
                 BaseActivity.this.finish();
