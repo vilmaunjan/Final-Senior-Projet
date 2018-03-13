@@ -41,12 +41,12 @@ public class DbManager {
 
         // Save the context received via constructor in a local variable
         // it also saves the activity of the current view
-        public createItem(Context context, String[] Username) {
+        public createItem(Context context, String[] userData) {
             currentContext = context;
-            txtUsername = Username[0];
-            txtFirstname = Username[1];
-            txtLastname = Username[2];
-            txtPassword = Username[3];
+            txtUsername = userData[0];
+            txtFirstname = userData[1];
+            txtLastname = userData[2];
+            txtPassword = userData[3];
 
         }
 
@@ -83,7 +83,7 @@ public class DbManager {
     public static class checkTable extends AsyncTask<String, Void, Boolean> {
         String txtUsername;
         String txtPassword;
-        String[] dataUser = new String[5];
+        String[] userData = new String[5];
 
         public static boolean loginFlag;
         LoginActivity lObj = null; //Need to have this to pass the loginFlag to LoginActivity
@@ -95,10 +95,10 @@ public class DbManager {
             rObj = obj;
         }
 
-        public checkTable(Context context, String[] Userdata, LoginActivity obj) {
+        public checkTable(Context context, String[] userData, LoginActivity obj) {
             currentContext = context;
-            txtUsername = Userdata[0];
-            txtPassword= Userdata[1];
+            txtUsername = userData[0];
+            txtPassword= userData[1];
             lObj = obj;
         }
 
@@ -126,10 +126,10 @@ public class DbManager {
             } else { //There was a user name with that name;
                 if (txtPassword.equals(result.get(0).getPassword())) {
                     DbManager.prime_pic = result.get(0).getPic1();
-                    dataUser[0] = result.get(0).getUserId();
-                    dataUser[1] = result.get(0).getFirstName();
-                    dataUser[2] = result.get(0).getLastName();
-                    dataUser[3] = result.get(0).getPassword();
+                    userData[0] = result.get(0).getUserId();
+                    userData[1] = result.get(0).getFirstName();
+                    userData[2] = result.get(0).getLastName();
+                    userData[3] = result.get(0).getPassword();
                     loginFlag = true;
                 }
                 else{
@@ -144,7 +144,7 @@ public class DbManager {
                 rObj.initializeResult(result);
             }
             if(lObj != null){
-                lObj.getUserData(dataUser);
+                lObj.getUserData(userData);
                 lObj.initializeResult(result);
             }
         }

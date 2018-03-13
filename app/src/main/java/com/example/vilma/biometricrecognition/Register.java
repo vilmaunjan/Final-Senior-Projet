@@ -43,7 +43,7 @@ public class Register extends BaseActivity implements TakePicFragment.PictureTak
 
     Button btnRegister;
 
-    String[] dataUser= new String[5];
+    String[] userData= new String[5];
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private String fragPhotoFilePath = null;
@@ -86,14 +86,14 @@ public class Register extends BaseActivity implements TakePicFragment.PictureTak
     private void tryToUpload(View v) {
         if(fragPhotoFilePath != null){
             txtUsername = txtUsernameBox.getText().toString();
-            dataUser[0] = txtUsernameBox.getText().toString();
-            dataUser[1] = txtFirstnameBox.getText().toString();
-            dataUser[2] = txtLastnameBox.getText().toString();
-            dataUser[3] = txtPasswordBox.getText().toString();
-            if (txtUsername.equals("") || txtUsername.toString().equals("Enter a Username")
-                    ||dataUser[1].equals("") || dataUser[1].toString().equals("Enter First Name")
-                    ||dataUser[2].equals("") || dataUser[2].toString().equals("Enter Last Name")
-                    ||dataUser[3].toString().equals("") || dataUser[3].toString().equals("Enter Password")) {
+            userData[0] = txtUsernameBox.getText().toString();
+            userData[1] = txtFirstnameBox.getText().toString();
+            userData[2] = txtLastnameBox.getText().toString();
+            userData[3] = txtPasswordBox.getText().toString();
+            if (txtUsername.matches("\\w") || txtUsername.toString().equals("Enter a Username")
+                    ||userData[1].matches("\\w") || userData[1].toString().equals("Enter First Name")
+                    ||userData[2].matches("\\w") || userData[2].toString().equals("Enter Last Name")
+                    ||userData[3].matches("\\w") || userData[3].toString().equals("Enter Password")) {
                 Toast.makeText(this, "Please enter all field", Toast.LENGTH_LONG).show();
             }else{
 
@@ -137,7 +137,7 @@ public class Register extends BaseActivity implements TakePicFragment.PictureTak
             Toast.makeText(this, "Please enter a unique username", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, "Welcome to Hertz!", Toast.LENGTH_SHORT).show();
-            DbManager.createItem createItem = new DbManager.createItem(this, dataUser);
+            DbManager.createItem createItem = new DbManager.createItem(this, userData);
             createItem.execute();
 
             try {

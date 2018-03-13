@@ -243,7 +243,16 @@
                     android:popupBackground="@color/colorOpaque"
                     android:prompt="@string/car_prompt" />
             </LinearLayout>
-
+            <fragment
+                android:id="@+id/fragment"
+                android:name="com.example.vilma.biometricrecognition.TakePicFragment"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                tools:layout="@layout/take_pic_fragment" />
             <Button
                 android:id="@+id/btnReserve"
                 android:layout_width="match_parent"

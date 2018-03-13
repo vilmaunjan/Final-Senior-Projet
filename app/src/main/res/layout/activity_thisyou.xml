@@ -19,25 +19,32 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:text="Ready?"
+        android:text="Terms and Conditions"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="40sp" />
+        android:textSize="30sp"
+        android:textStyle="bold"/>
 
-    <ImageView
-        android:id="@+id/previewImageView"
-        android:layout_width="230dp"
-        android:layout_height="270dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_gravity="center" android:contentDescription="TODO"/>
+    <TextView
+        android:id="@+id/terms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id orci ullamcorper, dapibus tortor vitae, cursus velit. Etiam imperdiet nisi eu ipsum vulputate, id rutrum diam pellentesque. Cras gravida turpis mi, ac pulvinar nibh bibendum non. Vivamus dictum lorem vitae leo lacinia, nec sagittis urna consequat. Nam sed augue est. Ut vel ultricies justo. Praesent nec dolor ultrices, aliquam risus eu, interdum mi. Nam consectetur convallis tempus. Aenean ligula augue, eleifend nec sollicitudin bibendum, rhoncus sit amet ex. Quisque in lorem ante. Fusce non tellus vel tellus laoreet vestibulum ac sed neque. Quisque felis ante, scelerisque vehicula libero ac, posuere hendrerit arcu. Quisque aliquam placerat mi ac porttitor. Morbi dapibus ultrices velit, non finibus leo efficitur ac. Fusce in consequat felis. Mauris fermentum porttitor pulvinar. "
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15sp"
+        android:background="@color/colorOpaque"
+        android:textStyle="bold"/>
+
+
+
 
     <TextView
         android:id="@+id/txtUsernameCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/colorOpaque"
-        android:text="Username"
+        android:text="Do You Accept?"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="30sp"
         android:textStyle="bold" />

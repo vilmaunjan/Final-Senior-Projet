@@ -48,15 +48,15 @@ public class HomeActivity extends BaseActivity {
 
         Intent intentExtras = getIntent();
         Bundle extraBundle = intentExtras.getExtras();
-        //txtFirstname = extraBundle.getString("FirstName");
-        //txtLastname = extraBundle.getString("LastName");
-        //txtUsername = extraBundle.getString("Username");
+        txtFirstname = extraBundle.getString("FirstName");
+        txtLastname = extraBundle.getString("LastName");
+        txtUsername = extraBundle.getString("Username");
 
         //Do this so that the user info can be stored for all activities, and so we dont need to pass from 1 activity to another
-        SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
-        txtFirstname = prefs.getString("FirstName",null);
-        txtLastname = prefs.getString("LastName",null);
-        txtUsername = prefs.getString("Username",null);
+//        SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
+//        txtFirstname = prefs.getString("FirstName",null);
+//        txtLastname = prefs.getString("LastName",null);
+//        txtUsername = prefs.getString("Username",null);
 
         usernameTxtView.setText(txtFirstname+" "+txtLastname);
 //        usernameTxtView.setText(txtUsername);
@@ -82,6 +82,14 @@ public class HomeActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 Intent intentRent = new Intent(HomeActivity.this,CheckoutActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("FirstName", txtFirstname);
+                bundle.putString("LastName", txtLastname);
+//            bundle.putString("PhotoPath", fragPhotoFilePath);
+//            bundle.putString("Target",target);
+//            bundle.putString("Source",source);
+                bundle.putString("Username", txtUsername);
+                intentRent.putExtras(bundle);
                 startActivity(intentRent);
             }
         });

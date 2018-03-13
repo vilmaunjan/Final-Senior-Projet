@@ -41,7 +41,7 @@ public class LoginActivity extends BaseActivity implements TakePicFragment.Pictu
     EditText txtUsernameBox;
     EditText txtPasswordBox;
     Button btnLogin;
-    String[] Userdata = new String[2];
+    String[] userData = new String[2];
     String txtUsername;
     String txtFirstname;
     String txtLastname;
@@ -99,13 +99,13 @@ public class LoginActivity extends BaseActivity implements TakePicFragment.Pictu
    //     if(fragPhotoFilePath != null){
             txtUsername = txtUsernameBox.getText().toString();
             txtPassword = txtPasswordBox.getText().toString();
-            Userdata[0] = txtUsername;
-            Userdata[1] = txtPassword;
-            if (txtUsername.equals("") || txtUsername.toString().equals("Enter a Username")
-                    || txtPassword.equals("") || txtPassword.toString().equals("Enter Password")) {
+            userData[0] = txtUsername;
+            userData[1] = txtPassword;
+            if (txtUsername.matches("\\w")  || txtUsername.toString().equals("Enter a Username")
+                    || txtPassword.matches("\\w") || txtPassword.toString().equals("Enter Password")) {
                 Toast.makeText(this, "Please enter a valid username or Password", Toast.LENGTH_LONG).show();
             }else{
-                DbManager.checkTable checkTable = new DbManager.checkTable(this, Userdata,this);
+                DbManager.checkTable checkTable = new DbManager.checkTable(this, userData,this);
                 checkTable.execute();
                 try {
                     checkTable.get();
@@ -123,10 +123,10 @@ public class LoginActivity extends BaseActivity implements TakePicFragment.Pictu
 //        }
     }
 
-    public void getUserData(String[] dataUser){
-        txtFirstname = dataUser[1];
-        txtLastname = dataUser[2];
-        txtRePassword = dataUser[3];
+    public void getUserData(String[] userData){
+        txtFirstname = userData[1];
+        txtLastname = userData[2];
+        txtRePassword = userData[3];
 //        Toast.makeText(this, txtFirstname+","+txtLastname+ "!", Toast.LENGTH_LONG).show();
     }
 
@@ -172,6 +172,7 @@ public class LoginActivity extends BaseActivity implements TakePicFragment.Pictu
 
             Intent intentBundle = new Intent(LoginActivity.this,HomeActivity.class);
             Bundle bundle = new Bundle();
+          
             bundle.putString("FirstName", txtFirstname);
             bundle.putString("LastName", txtLastname);
 //            bundle.putString("PhotoPath", fragPhotoFilePath);
