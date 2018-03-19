@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -31,27 +32,20 @@ import static android.app.Activity.RESULT_OK;
 
 public class TakePicFragment<T> extends Fragment{
 
-    //I dont think we need this
     //creates a PictureTakerListener variable used to make the fragment
     PictureTakerListener picCommander;
-    //makes sure there is a user name
-    boolean requirSatisfied;
-    //context
-    Context context;
-    //needed username
-    String userName;
-    //the path of the photo file
-    String fragPhotoFilePath;
-    //the actual button
-    Button picButton;
+    boolean requirSatisfied; //makes sure there is a user name
+
+    Context context; //context
+    String userName; //needed username
+    String fragPhotoFilePath; //the path of the photo file
+    Button picButton; //the actual button
     //variables to check is external storage is available
     boolean mExternalStorageWriteable = false;
-    //database stuff
-    DbManager dBManager = new DbManager();
+    DbManager dBManager = new DbManager(); //database stuff
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
-    //I dont think I need this
     //makes sure that the activity that this fragment is in checks the requirements before taking a pic
     public interface PictureTakerListener{
         void picClick(String photoPath, String userName);
@@ -75,8 +69,8 @@ public class TakePicFragment<T> extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.take_pic_fragment, container, false);
-        //Bundle args = getArguments();
-        //userName =  args.getString("Username");
+        //view.setBackgroundColor(Color.parseColor("#ffcc00"));
+
         picButton = (Button)view.findViewById(R.id.button);
 
 

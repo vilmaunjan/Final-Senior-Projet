@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/car1">
+    android:background="@color/colorWhite">
 
     <include
         android:id="@+id/toolbar"
@@ -14,69 +14,70 @@
         />
 
     <TextView
-        android:id="@+id/txtIsThisYou"
+        android:id="@+id/lblB"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Terms and Conditions"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="30sp"
-        android:textStyle="bold"/>
+        android:layout_height="200dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/ny"
+        android:gravity="bottom"
+        android:paddingBottom="10dp"
+        android:paddingStart="10dp"
+        android:text="Terms And Conditions"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/terms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id orci ullamcorper, dapibus tortor vitae, cursus velit. Etiam imperdiet nisi eu ipsum vulputate, id rutrum diam pellentesque. Cras gravida turpis mi, ac pulvinar nibh bibendum non. Vivamus dictum lorem vitae leo lacinia, nec sagittis urna consequat. Nam sed augue est. Ut vel ultricies justo. Praesent nec dolor ultrices, aliquam risus eu, interdum mi. Nam consectetur convallis tempus. Aenean ligula augue, eleifend nec sollicitudin bibendum, rhoncus sit amet ex. Quisque in lorem ante. Fusce non tellus vel tellus laoreet vestibulum ac sed neque. Quisque felis ante, scelerisque vehicula libero ac, posuere hendrerit arcu. Quisque aliquam placerat mi ac porttitor. Morbi dapibus ultrices velit, non finibus leo efficitur ac. Fusce in consequat felis. Mauris fermentum porttitor pulvinar. "
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="15sp"
-        android:background="@color/colorOpaque"
-        android:textStyle="bold"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
-
-
-    <TextView
-        android:id="@+id/txtUsernameCheck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Do You Accept?"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <LinearLayout
-        android:layout_width="336dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        android:paddingEnd="20dp"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp">
-
-        <Button
-            android:id="@+id/btnNo"
-            android:layout_width="155dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:backgroundTint="@color/colorAccent"
-            android:text="NO"
-            android:textColor="@color/colorPrimaryDark" />
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnYes"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:backgroundTint="@color/colorAccent"
-            android:text="YES"
-            android:textColor="@color/colorPrimaryDark" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:paddingTop="10dp"
+                android:text="Lorem ipsum dolor sit amet, his libris detraxit legendos ut. Sed at possit referrentur dissentiunt, unum legimus epicuri mei te. In sea feugiat deserunt, nam ut corpora aliquando. Eu tota labitur dissentiunt per, mel porro fugit eligendi cu. Te decore platonem duo, mea agam mucius accusata te. Choro quaeque convenire nec et.  Ad libris dictas eam, diam fugit eripuit eam ut. Cu est affert nullam, ea tibique sensibus cotidieque mel. Pro mollis efficiendi id, nonumy fuisset efficiendi an per. An nam praesent appellantur.  Ius in cibo aeque, usu no invenire indoctum. Pri sint ferri oporteat ei. An mea primis accumsan. Putent efficiendi sea in, cu usu debet nostrud volutpat.  Ne sanctus pertinax vim, ut sea tibique efficiantur. Ad solum bonorum invidunt nec, argumentum efficiantur mei ne. Denique ullamcorper ei per, ei vel graecis dissentias. Duo aperiam petentium molestiae ex, quo adhuc vitae affert te. Tation nusquam perfecto ut vel. Est aeque zril singulis ne.  Ex sint assueverit est, id omittam consetetur vel. Vix facilisis gloriatur temporibus te, ex solum posse aperiam cum, cu justo summo epicuri vix. Pro eu mundi mnesarchum voluptatum, ius cetero ocurreret ut, usu tamquam indoctum accommodare et. No vim soleat discere. Cum brute propriae constituto an, ne sit wisi iriure consetetur, vix assum mazim eirmod ex."
+                android:textColor="@color/colorPrimaryDark" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorAccent"
+                    android:text="Return to rental page"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <Button
+                    android:id="@+id/btnYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorAccent"
+                    android:text="I agree"
+                    android:textColor="@color/colorPrimaryDark" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
 
 </LinearLayout>

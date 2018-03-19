@@ -21,15 +21,12 @@ public class ThisYouActivity extends BaseActivity{
     ImageView preview;
     Button yes;
     Button no;
-    TextView thisYou;
-    TextView usernameTxtView;
     String txtFirstname;
     String txtLastname;
     String txtUsername;
     String previewPhotoPath;
     String target;
     String source;
-    String username;
     Float result;
 
     @Override  //calls this method immediately when this activity is called
@@ -47,9 +44,8 @@ public class ThisYouActivity extends BaseActivity{
         preview = (ImageView)findViewById(R.id.previewImageView);
         yes = findViewById(R.id.btnYes);
         no = findViewById(R.id.btnNo);
-        thisYou = findViewById(R.id.txtIsThisYou);
-        usernameTxtView = findViewById(R.id.txtUsernameCheck);
 
+/*
         Intent intentExtras = getIntent();
         Bundle extraBundle = intentExtras.getExtras();
         txtFirstname = extraBundle.getString("FirstName");
@@ -59,8 +55,16 @@ public class ThisYouActivity extends BaseActivity{
         target = extraBundle.getString("Target");
         source = extraBundle.getString("Source");
         username = extraBundle.getString("Username");
-        usernameTxtView.setText(username);
-        setPic();
+        */
+        SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
+        txtFirstname = prefs.getString("FirstName",null);
+        txtLastname = prefs.getString("LastName",null);
+        txtUsername = prefs.getString("Username",null);
+        previewPhotoPath = prefs.getString("PhotoPath",null);
+        target = prefs.getString("Target",null);
+        source = prefs.getString("Source",null);
+
+//        setPic();
 
         yes.setOnClickListener(new View.OnClickListener(){
 
@@ -76,8 +80,8 @@ public class ThisYouActivity extends BaseActivity{
             @Override
             public void onClick(View v) {
                 //this method does like pretty much all the work....like seriously-_-
-                Intent login = new Intent(ThisYouActivity.this, LoginActivity.class);
-                startActivity(login);
+                Intent home = new Intent(ThisYouActivity.this, HomeActivity.class);
+                startActivity(home);
             }
         });
 
@@ -93,41 +97,41 @@ public class ThisYouActivity extends BaseActivity{
         this.result = result;
         if(result != null) {
             if (result > 80) {
-                Toast.makeText(this, "You made a match of " + this.result.toString() + "!"
+                Toast.makeText(this, "You made a match of " + this.result.toString() + "! And successfully checked out"
                         , Toast.LENGTH_LONG).show();
 
                 Intent registerIntent = new Intent(ThisYouActivity.this, HomeActivity.class);
-                Bundle bundle = new Bundle();
+       /*         Bundle bundle = new Bundle();
                 bundle.putString("FirstName", txtFirstname);
                 bundle.putString("LastName", txtLastname);
                 bundle.putString("Username", txtUsername);
                 registerIntent.putExtras(bundle);
-                startActivity(registerIntent);
+         */     startActivity(registerIntent);
                 finish();
 
-                //Use sharedPreferences to pass data to another activities without starting the other activity
-                SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("FirstName", txtFirstname);
-                editor.putString("LastName", txtLastname);
-                editor.putString("Username", txtUsername);
-                editor.putFloat("Similarity", result);
-                editor.putString("Imagepath",previewPhotoPath);
-                editor.commit();
-
             } else {
-                Toast.makeText(this, "Match of only " + this.result.toString(), Toast.LENGTH_LONG)
+                Toast.makeText(this, "Match of only " + this.result.toString() +
+                        ", less than the minimum", Toast.LENGTH_LONG)
                         .show();
-                Intent failedIntent = new Intent(ThisYouActivity.this, LoginActivity.class);
+                Intent failedIntent = new Intent(ThisYouActivity.this, CheckoutActivity.class);
                 startActivity(failedIntent);
             }
         }else{
             Toast.makeText(this, "Picture doesn't match Prime", Toast.LENGTH_LONG).show();
-            Intent failedIntent = new Intent(ThisYouActivity.this, LoginActivity.class);
+            Intent failedIntent = new Intent(ThisYouActivity.this, CheckoutActivity.class);
             startActivity(failedIntent);
         }
+
+        //It is outside of the conditional statements so that it doesnt crush when there is no pic,
+        //but there is a BUG, when in terms & cond, user clicks no, it doesnt update the similarity score
+        SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putFloat("Similarity", result);
+        editor.commit();
     }
 
+/*
+    //DONT NEED THE FOLLOWING 2 METHODS BECAUSE WE ARE NO DISPLAYING A PICTURE
     public static Bitmap RotateBitmap(Bitmap source, float angle)
     {
         Matrix matrix = new Matrix();
@@ -159,6 +163,5 @@ public class ThisYouActivity extends BaseActivity{
         bitmap = RotateBitmap(bitmap,270);
         preview.setImageBitmap(bitmap);
     }
-
-
+*/
 }

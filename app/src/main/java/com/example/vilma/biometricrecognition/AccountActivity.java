@@ -39,7 +39,7 @@ public class AccountActivity extends BaseActivity {
 
         SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
         mResult = prefs.getFloat("Similarity",-1);
-        previewPhotoPath = prefs.getString("Imagepath",null);
+        previewPhotoPath = prefs.getString("PhotoPath",null);
 
         similarity.setText("Similarity of: "+mResult+"% ");
         setPic();
@@ -67,7 +67,7 @@ public class AccountActivity extends BaseActivity {
         bmOptions.inPurgeable = true;
 
         Bitmap bitmap = BitmapFactory.decodeFile(previewPhotoPath, bmOptions);
-        bitmap = RotateBitmap(bitmap,270);
+//        bitmap = RotateBitmap(bitmap,270);
         preview.setImageBitmap(bitmap);
     }
 

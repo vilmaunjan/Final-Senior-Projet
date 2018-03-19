@@ -1,5 +1,6 @@
 package com.example.vilma.biometricrecognition;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,10 +15,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
-public class CheckoutActivity extends BaseActivity {
+public class CheckoutActivity extends BaseActivity implements TakePicFragment.PictureTakerListener {
 
     Spinner spinnerPickupLocation;
     String pickupLocation;
@@ -39,14 +42,17 @@ public class CheckoutActivity extends BaseActivity {
     Spinner dropoffYear;
     String dropYear;
     String dropDate;
-    Button reserve;
-
 
     ArrayAdapter<CharSequence> adapterLocation;
     ArrayAdapter<CharSequence> adapterCar;
     ArrayAdapter<CharSequence> adapterDay;
     ArrayAdapter<CharSequence> adapterMonth;
     ArrayAdapter<CharSequence> adapterYear;
+
+    private String fragPhotoFilePath = null;
+    EditText txtUsernameBox;
+    String txtUsername;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
 
     @Override
@@ -184,17 +190,64 @@ public class CheckoutActivity extends BaseActivity {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
-        //initiate button
-        reserve = (Button) findViewById(R.id.btnReserve);
-        reserve.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                storeData();
-            }
-        });
     }
 
-    private void storeData(){
+    //method below allows TakePicFragment to grab the username the user typed in
+    @Override
+    public String getTxt(){
+        SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
+        txtUsername = prefs.getString("Username", null);
+        return txtUsername;
+    }
+    //grabs the photopath from the TakePicFragment and sets pic
+    @Override
+    public void picClick(String fragPhotoFilePath, String txtUsername) {
+        this.txtUsername = txtUsername;
+        this.fragPhotoFilePath = fragPhotoFilePath;
+        //Toast.makeText(this, "we did it", Toast.LENGTH_SHORT).show();
+    }
+
+    //I think this runs after the the picture is taken
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Toast.makeText(this, "Nice Pic!", Toast.LENGTH_LONG).show();
+            Intent intentAccount = new Intent(CheckoutActivity.this,ThisYouActivity.class);
+            startActivity(intentAccount);
+            storeRentalData();
+            uploadImage();
+        }
+    }
+
+    private void uploadImage(){
+        File file = new File(fragPhotoFilePath);
+            String target = txtUsername + "_" + file.getName();
+            String source = txtUsername + "_prime.jpg";
+
+          S3Upload upload = new S3Upload(this, fragPhotoFilePath, target);
+            upload.execute();
+
+        try {
+            upload.get();
+        } catch (InterruptedException e) {
+            Toast.makeText(this, "IM SORRY vilma", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            Toast.makeText(this, "IM SORRY gabe", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+
+        //Stores first, last, and user name in the shared preferences
+        SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("PhotoPath", fragPhotoFilePath);
+        editor.putString("Target",target);
+        editor.putString("Source",source);
+        editor.commit();
+
+    }
+
+    private void storeRentalData(){
 
         pickDate = pickDay+"/"+pickMonth+"/"+pickYear;
         dropDate = dropDay+"/"+dropMonth+"/"+dropYear;
@@ -208,10 +261,6 @@ public class CheckoutActivity extends BaseActivity {
         editor.putString("Dropoff date", dropDate);
         editor.putString("Car", car);
         editor.commit();
-
-        Toast.makeText(getApplicationContext(), "pickupdate: "+pickDate, Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), "dropoffdate: "+dropDate, Toast.LENGTH_LONG).show();
-
 
         Toast.makeText(getApplicationContext(), "Reservation info was stored", Toast.LENGTH_LONG).show();
     }
