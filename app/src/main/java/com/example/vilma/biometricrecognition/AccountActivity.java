@@ -5,8 +5,18 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,10 +27,10 @@ import android.widget.Toast;
 
 public class AccountActivity extends BaseActivity {
 
-    String previewPhotoPath;
-    ImageView preview;
-    TextView similarity;
+    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private ViewPager mViewPager;
     Float mResult;
+    private TextView lblSimilarity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,51 +40,63 @@ public class AccountActivity extends BaseActivity {
         FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.content_frame); //Remember this is the FrameLayout area within your activity_main.xml
         getLayoutInflater().inflate(R.layout.activity_account, contentFrameLayout);
 
-        initUI();
-    }
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
-    private void initUI() {
-        similarity = (TextView) findViewById(R.id.lblSimilarity);
-        preview = (ImageView)findViewById(R.id.previewImageView);
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
         SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
         mResult = prefs.getFloat("Similarity",-1);
-        previewPhotoPath = prefs.getString("PhotoPath",null);
-
-        similarity.setText("Similarity of: "+mResult+"% ");
-        setPic();
+        lblSimilarity = (TextView) this.findViewById(R.id.lblSimilarity);
+        lblSimilarity.setText("Similarity of: "+mResult+"% ");
 
     }
 
-    private void setPic() {
-        // Get the dimensions of the View
-        int targetW = 210;
-        int targetH = 320;
 
-        // Get the dimensions of the bitmap
-        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-        bmOptions.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(previewPhotoPath, bmOptions);
-        int photoW = bmOptions.outWidth;
-        int photoH = bmOptions.outHeight;
+    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+        int mNumOfTabs;
 
-        // Determine how much to scale down the image
-        int scaleFactor = Math.min(photoW/targetW, photoH/targetH);
+        public SectionsPagerAdapter(FragmentManager fm, int numOfTabs) {
+            super(fm);
+            this.mNumOfTabs = numOfTabs;
+        }
 
-        // Decode the image file into a Bitmap sized to fill the View
-        bmOptions.inJustDecodeBounds = false;
-        bmOptions.inSampleSize = scaleFactor;
-        bmOptions.inPurgeable = true;
+        @Override
+        public Fragment getItem(int position) {
+            //return the current tabs
+            switch (position){
+                case 0:
+                    PrimePictureActivity t1 = new PrimePictureActivity();
+                    return t1;
+                case 1:
+                    CheckoutPictureActivity t2 = new  CheckoutPictureActivity();
+                    return t2;
+                default:
+                    return null;
+            }
+        }
 
-        Bitmap bitmap = BitmapFactory.decodeFile(previewPhotoPath, bmOptions);
-//        bitmap = RotateBitmap(bitmap,270);
-        preview.setImageBitmap(bitmap);
-    }
+        @Override
+        public int getCount() {
+            return mNumOfTabs;
+        }
 
-    public static Bitmap RotateBitmap(Bitmap source, float angle)
-    {
-        Matrix matrix = new Matrix();
-        matrix.postRotate(angle);
-        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);
+        @Override
+        public CharSequence getPageTitle(int position){
+            switch (position){
+                case 0:
+                    return "TEAMS";
+                case 1:
+                    return "TOURNAMENTS";
+
+                case 2:
+                    return "SCORES";
+            }
+            return null;
+        }
     }
 }

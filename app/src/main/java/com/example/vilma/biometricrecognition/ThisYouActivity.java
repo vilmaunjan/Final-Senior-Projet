@@ -41,7 +41,7 @@ public class ThisYouActivity extends BaseActivity{
     }
 
     private void initUI() {
-        preview = (ImageView)findViewById(R.id.previewImageView);
+        //preview = (ImageView)findViewById(R.id.previewImageView);
         yes = findViewById(R.id.btnYes);
         no = findViewById(R.id.btnNo);
 
