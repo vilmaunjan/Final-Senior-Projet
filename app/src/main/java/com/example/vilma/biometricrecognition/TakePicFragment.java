@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -45,6 +46,11 @@ public class TakePicFragment<T> extends Fragment{
     DbManager dBManager = new DbManager(); //database stuff
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
+
+    public void updateTextView() {
+        TextView t = (TextView) this.getView().findViewById(R.id.button);
+        t.setText("Visual Checkout");
+    }
 
     //makes sure that the activity that this fragment is in checks the requirements before taking a pic
     public interface PictureTakerListener{

@@ -68,6 +68,10 @@ public class CheckoutActivity extends BaseActivity implements TakePicFragment.Pi
 
     private void initUI() {
 
+        TakePicFragment fragment_obj = (TakePicFragment)getSupportFragmentManager().
+                findFragmentById(R.id.fragment2);
+        fragment_obj.updateTextView();
+
         //Used for location spinners
         adapterLocation = ArrayAdapter.createFromResource(this, R.array.city_arrays, android.R.layout.simple_spinner_item);
         adapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
