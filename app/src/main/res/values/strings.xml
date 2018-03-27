@@ -7,48 +7,48 @@
     <string name="car_prompt">Choose a car</string>
 
     <string-array name="city_arrays">
-        <item>Fort Myers</item>
-        <item>Miami</item>
-        <item>Fort Lauderdale</item>
+        <item><FONT COLOR="#454545"><b>Fort Myers</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>Miami</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>Fort Lauderdale</b></FONT></item>
     </string-array>
 
     <string-array name="car_arrays">
-        <item>Full-size</item>
-        <item>Mid-size</item>
-        <item>Compact</item>
+        <item><FONT COLOR="#454545"><b>Full-size</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>Mid-size</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>Compact</b></FONT></item>
     </string-array>
 
     <string-array name="ap_arrays">
-        <item>AM</item>
-        <item>PM</item>
+        <item><FONT COLOR="#454545"><b>AM</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>PM</b></FONT></item>
     </string-array>
 
     <string-array name="day_arrays">
-        <item>01</item>
-        <item>02</item>
-        <item>03</item>
-        <item>04</item>
-        <item>05</item>
+        <item><FONT COLOR="#454545"><b>01</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>02</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>03</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>04</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>05</b></FONT></item>
     </string-array>
 
     <string-array name="month_arrays">
-        <item>01</item>
-        <item>02</item>
-        <item>03</item>
-        <item>04</item>
-        <item>05</item>
-        <item>06</item>
-        <item>07</item>
-        <item>08</item>
-        <item>09</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
+        <item><FONT COLOR="#454545"><b>01</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>02</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>03</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>04</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>05</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>06</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>07</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>08</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>09</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>10</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>11</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>12</b></FONT></item>
     </string-array>
 
     <string-array name="year_arrays">
-        <item>2018</item>
-        <item>2019</item>
+        <item><FONT COLOR="#454545"><b>2018</b></FONT></item>
+        <item><FONT COLOR="#454545"><b>2019</b></FONT></item>
     </string-array>
 
 </resources>

@@ -48,6 +48,7 @@
 
                 <Spinner
                     android:id="@+id/spinnerPickupLocation"
+                    android:theme="@style/spinnerTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorOpaque"
@@ -80,6 +81,7 @@
                     android:background="@color/colorOpaque"
                     android:backgroundTint="@color/colorPrimary"
                     android:entries="@array/city_arrays"
+                    android:theme="@style/spinnerTheme"
                     android:popupBackground="@color/colorOpaque"
                     android:prompt="@string/city_prompt" />
             </LinearLayout>
@@ -125,6 +127,7 @@
                     android:layout_width="5dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:theme="@style/spinnerTheme"
                     android:background="@color/colorOpaque"
                     android:entries="@array/month_arrays" />
 
@@ -133,6 +136,7 @@
                     android:layout_width="5dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:theme="@style/spinnerTheme"
                     android:background="@color/colorOpaque"
                     android:entries="@array/day_arrays" />
 
@@ -141,6 +145,7 @@
                     android:layout_width="15dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:theme="@style/spinnerTheme"
                     android:background="@color/colorOpaque"
                     android:entries="@array/year_arrays" />
 
@@ -158,6 +163,7 @@
                     android:layout_width="5dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:theme="@style/spinnerTheme"
                     android:background="@color/colorOpaque"
                     android:entries="@array/month_arrays" />
 
@@ -166,6 +172,7 @@
                     android:layout_width="5dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:theme="@style/spinnerTheme"
                     android:background="@color/colorOpaque"
                     android:entries="@array/day_arrays" />
 
@@ -174,6 +181,7 @@
                     android:layout_width="15dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:theme="@style/spinnerTheme"
                     android:background="@color/colorOpaque"
                     android:entries="@array/year_arrays" />
 
@@ -198,6 +206,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="30dp"
                     android:layout_weight="1"
+                    android:theme="@style/spinnerTheme"
                     android:background="@color/colorOpaque"
                     android:entries="@array/ap_arrays" />
 
@@ -213,6 +222,7 @@
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:theme="@style/spinnerTheme"
                     android:background="@color/colorOpaque"
                     android:entries="@array/ap_arrays" />
             </LinearLayout>
@@ -239,7 +249,9 @@
                     android:layout_height="wrap_content"
                     android:background="@color/colorOpaque"
                     android:backgroundTint="@color/colorPrimary"
+
                     android:entries="@array/car_arrays"
+                    android:theme="@style/spinnerTheme"
                     android:popupBackground="@color/colorOpaque"
                     android:prompt="@string/car_prompt" />
 
