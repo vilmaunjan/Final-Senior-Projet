@@ -31,6 +31,8 @@
         <activity android:name=".ThisYouActivity" />
         <activity android:name=".BaseActivity" />
         <activity android:name=".AccountActivity" />
+        <activity android:name=".CheckoutActivity"/>
+        <activity android:name=".PreviewActivity"/>
 
         <service
             android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"

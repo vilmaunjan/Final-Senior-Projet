@@ -25,6 +25,7 @@ public class HomeActivity extends BaseActivity {
     Button btnCheckout;
     Button btnRent;
     TextView usernameTxtView;
+    TextView dateTime;
     String txtFirstname;
     String txtLastname;
     String txtUsername;
@@ -45,6 +46,7 @@ public class HomeActivity extends BaseActivity {
         btnCheckout = (Button) findViewById(R.id.btnCheckout);
         btnRent = (Button) findViewById(R.id.btnRent);
         usernameTxtView = findViewById(R.id.txtName);
+        dateTime = findViewById(R.id.txtReservationDatetime);
 
     //    Intent intentExtras = getIntent();
     //    Bundle extraBundle = intentExtras.getExtras();
@@ -60,6 +62,13 @@ public class HomeActivity extends BaseActivity {
 
         usernameTxtView.setText(txtFirstname+" "+txtLastname);
 
+//        if(prefs.getString("Pickup date",null).isEmpty()){
+//            dateTime.setText(txtFirstname+"no reservation on file");
+//        }
+//        else {
+//            dateTime.setText(prefs.getString("Pickup date",null));
+//        }
+
         btnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,7 +80,8 @@ public class HomeActivity extends BaseActivity {
         btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intentAccount = new Intent(HomeActivity.this,PreviewActivity.class);
+                startActivity(intentAccount);
             }
         });
 

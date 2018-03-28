@@ -54,6 +54,8 @@ public class CheckoutActivity extends BaseActivity implements TakePicFragment.Pi
     String txtUsername;
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
+    Button btnHome;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +70,7 @@ public class CheckoutActivity extends BaseActivity implements TakePicFragment.Pi
 
     private void initUI() {
 
-        TakePicFragment fragment_obj = (TakePicFragment)getSupportFragmentManager().
-                findFragmentById(R.id.fragment2);
-        fragment_obj.updateTextView();
-
+//        btnHome = findViewById(R.id.btnHome);
         //Used for location spinners
         adapterLocation = ArrayAdapter.createFromResource(this, R.array.city_arrays, android.R.layout.simple_spinner_item);
         adapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -193,6 +192,15 @@ public class CheckoutActivity extends BaseActivity implements TakePicFragment.Pi
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
+
+//        btnHome.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                storeRentalData();
+//                Intent intentAccount = new Intent(CheckoutActivity.this,HomeActivity.class);
+//                startActivity(intentAccount);
+//            }
+//        });
 
     }
 
