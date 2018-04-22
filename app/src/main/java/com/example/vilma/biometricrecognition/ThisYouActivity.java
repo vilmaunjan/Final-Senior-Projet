@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -97,7 +98,7 @@ public class ThisYouActivity extends BaseActivity{
         this.result = result;
         if(result != null) {
             if (result > 80) {
-                Toast.makeText(this, "You made a match of " + this.result.toString() + "! And successfully checked out"
+                Toast.makeText(this, "Thank you "+txtFirstname+"! You have successfully checked out"
                         , Toast.LENGTH_LONG).show();
 
                 Intent registerIntent = new Intent(ThisYouActivity.this, HomeActivity.class);
@@ -110,15 +111,14 @@ public class ThisYouActivity extends BaseActivity{
                 finish();
 
             } else {
-                Toast.makeText(this, "Match of only " + this.result.toString() +
-                        ", less than the minimum", Toast.LENGTH_LONG)
-                        .show();
-                Intent failedIntent = new Intent(ThisYouActivity.this, CheckoutActivity.class);
+                Toast.makeText(this, "You are not "+txtFirstname+" "+txtLastname+". Match percentage "
+                        + this.result.toString(), Toast.LENGTH_LONG).show();
+                Intent failedIntent = new Intent(ThisYouActivity.this, PreviewActivity.class);
                 startActivity(failedIntent);
             }
         }else{
             Toast.makeText(this, "Picture doesn't match Prime", Toast.LENGTH_LONG).show();
-            Intent failedIntent = new Intent(ThisYouActivity.this, CheckoutActivity.class);
+            Intent failedIntent = new Intent(ThisYouActivity.this, PreviewActivity.class);
             startActivity(failedIntent);
         }
 

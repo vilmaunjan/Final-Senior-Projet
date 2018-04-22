@@ -36,7 +36,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -48,14 +48,12 @@
 
                 <Spinner
                     android:id="@+id/spinnerPickupLocation"
-                    android:theme="@style/spinnerTheme"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorOpaque"
-                    android:backgroundTint="@color/colorPrimary"
+                    android:layout_height="33dp"
+                    android:background="@color/colorTransparentGrey"
                     android:entries="@array/city_arrays"
-                    android:popupBackground="@color/colorOpaque"
-                    android:prompt="@string/city_prompt" />
+                    android:prompt="@string/city_prompt"
+                    android:theme="@style/spinnerTheme" />
             </LinearLayout>
 
             <LinearLayout
@@ -64,7 +62,6 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -77,13 +74,11 @@
                 <Spinner
                     android:id="@+id/spinnerDropoffLocation"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorOpaque"
-                    android:backgroundTint="@color/colorPrimary"
+                    android:layout_height="33dp"
+                    android:background="@color/colorTransparentGrey"
                     android:entries="@array/city_arrays"
-                    android:theme="@style/spinnerTheme"
-                    android:popupBackground="@color/colorOpaque"
-                    android:prompt="@string/city_prompt" />
+                    android:prompt="@string/city_prompt"
+                    android:theme="@style/spinnerTheme" />
             </LinearLayout>
 
             <LinearLayout
@@ -91,7 +86,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
@@ -125,33 +119,33 @@
                 <Spinner
                     android:id="@+id/pickMonth"
                     android:layout_width="5dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="33dp"
                     android:layout_weight="1"
-                    android:theme="@style/spinnerTheme"
-                    android:background="@color/colorOpaque"
-                    android:entries="@array/month_arrays" />
+                    android:background="@color/colorTransparentGrey"
+                    android:entries="@array/month_arrays"
+                    android:theme="@style/spinnerTheme" />
 
                 <Spinner
                     android:id="@+id/pickDay"
                     android:layout_width="5dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="33dp"
                     android:layout_weight="1"
-                    android:theme="@style/spinnerTheme"
-                    android:background="@color/colorOpaque"
-                    android:entries="@array/day_arrays" />
+                    android:background="@color/colorTransparentGrey"
+                    android:entries="@array/day_arrays"
+                    android:theme="@style/spinnerTheme" />
 
                 <Spinner
                     android:id="@+id/pickYear"
                     android:layout_width="15dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="33dp"
                     android:layout_weight="1"
-                    android:theme="@style/spinnerTheme"
-                    android:background="@color/colorOpaque"
-                    android:entries="@array/year_arrays" />
+                    android:background="@color/colorTransparentGrey"
+                    android:entries="@array/year_arrays"
+                    android:theme="@style/spinnerTheme" />
 
                 <TextView
                     android:id="@+id/textView13"
-                    android:layout_width="15dp"
+                    android:layout_width="5dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_vertical|center_horizontal|center"
@@ -161,29 +155,29 @@
                 <Spinner
                     android:id="@+id/dropMonth"
                     android:layout_width="5dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="33dp"
                     android:layout_weight="1"
-                    android:theme="@style/spinnerTheme"
-                    android:background="@color/colorOpaque"
-                    android:entries="@array/month_arrays" />
+                    android:background="@color/colorTransparentGrey"
+                    android:entries="@array/month_arrays"
+                    android:theme="@style/spinnerTheme" />
 
                 <Spinner
                     android:id="@+id/dropDay"
                     android:layout_width="5dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="33dp"
                     android:layout_weight="1"
-                    android:theme="@style/spinnerTheme"
-                    android:background="@color/colorOpaque"
-                    android:entries="@array/day_arrays" />
+                    android:background="@color/colorTransparentGrey"
+                    android:entries="@array/day_arrays"
+                    android:theme="@style/spinnerTheme" />
 
                 <Spinner
                     android:id="@+id/dropYear"
                     android:layout_width="15dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="33dp"
                     android:layout_weight="1"
-                    android:theme="@style/spinnerTheme"
-                    android:background="@color/colorOpaque"
-                    android:entries="@array/year_arrays" />
+                    android:background="@color/colorTransparentGrey"
+                    android:entries="@array/year_arrays"
+                    android:theme="@style/spinnerTheme" />
 
             </LinearLayout>
 
@@ -233,7 +227,7 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -246,36 +240,27 @@
                 <Spinner
                     android:id="@+id/spinnerCarType"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorOpaque"
-                    android:backgroundTint="@color/colorPrimary"
+                    android:layout_height="33dp"
+                    android:background="@color/colorTransparentGrey"
 
                     android:entries="@array/car_arrays"
-                    android:theme="@style/spinnerTheme"
-                    android:popupBackground="@color/colorOpaque"
-                    android:prompt="@string/car_prompt" />
+                    android:prompt="@string/car_prompt"
+                    android:theme="@style/spinnerTheme" />
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Please take a picture to proceed with the checkout process"
-                    android:textColor="@color/colorPrimaryDark" />
+
             </LinearLayout>
-            <fragment
-                android:id="@+id/fragment2"
-                android:name="com.example.vilma.biometricrecognition.TakePicFragment"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginStart="30dp"
-                tools:layout="@layout/take_pic_fragment" />
 
+            <Button
+                android:id="@+id/btnReserve"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:text="Place reservation"
+                android:textColor="@color/colorPrimaryDark" />
 
         </LinearLayout>
+
+
     </ScrollView>
 
 

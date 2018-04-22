@@ -10,7 +10,7 @@
     </style>
 
     <style name="spinnerTheme" parent="android:Theme">
-        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
 
 

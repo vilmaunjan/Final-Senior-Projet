@@ -124,16 +124,20 @@ public class DbManager {
             if (result.isEmpty()) {//Unsuccessful
                 loginFlag = false;
             } else { //There was a user name with that name;
-                if (txtPassword.equals(result.get(0).getPassword())) {
-                    DbManager.prime_pic = result.get(0).getPic1();
-                    userData[0] = result.get(0).getUserId();
-                    userData[1] = result.get(0).getFirstName();
-                    userData[2] = result.get(0).getLastName();
-                    userData[3] = result.get(0).getPassword();
-                    loginFlag = true;
+                if(rObj!=null){
+                    loginFlag =true;
                 }
-                else{
-                    loginFlag = false;
+                else {
+                    if (txtPassword.equals(result.get(0).getPassword())) {
+                        DbManager.prime_pic = result.get(0).getPic1();
+                        userData[0] = result.get(0).getUserId();
+                        userData[1] = result.get(0).getFirstName();
+                        userData[2] = result.get(0).getLastName();
+                        userData[3] = result.get(0).getPassword();
+                        loginFlag = true;
+                    } else {
+                        loginFlag = false;
+                    }
                 }
             }
             return loginFlag;

@@ -82,7 +82,7 @@
                 android:textColorHint="@color/colorTransparentGrey" />
 
             <EditText
-                android:id="@+id/txtPassWord"
+                android:id="@+id/txtPassWord1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_gravity="center"

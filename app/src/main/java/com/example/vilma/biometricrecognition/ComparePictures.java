@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import android.content.Context;
@@ -35,6 +36,7 @@ import java.util.List;
 
 public class ComparePictures extends AsyncTask<Object, String, Float> {
 
+    private static final String LOG_TAG = ComparePictures.class.getSimpleName();
     private Context mContext;
     private String mSource;
     private String mTarget;
@@ -98,7 +100,7 @@ public class ComparePictures extends AsyncTask<Object, String, Float> {
                         + "% confidence.");
             }
         } catch (InvalidParameterException e){
-
+            Log.d(LOG_TAG, "TEST CASE 4: There is not a face in the image.");
         }
         return confidence;
     }

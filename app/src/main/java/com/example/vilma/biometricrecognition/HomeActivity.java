@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,8 @@ public class HomeActivity extends BaseActivity {
     String txtFirstname;
     String txtLastname;
     String txtUsername;
+    String datetime;
+    LinearLayout l;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class HomeActivity extends BaseActivity {
         btnRent = (Button) findViewById(R.id.btnRent);
         usernameTxtView = findViewById(R.id.txtName);
         dateTime = findViewById(R.id.txtReservationDatetime);
+        l = findViewById(R.id.reservationLayout);
 
     //    Intent intentExtras = getIntent();
     //    Bundle extraBundle = intentExtras.getExtras();
@@ -59,15 +63,9 @@ public class HomeActivity extends BaseActivity {
         txtFirstname = prefs.getString("FirstName",null);
         txtLastname = prefs.getString("LastName",null);
         txtUsername = prefs.getString("Username",null);
+        datetime = prefs.getString("Pickup date","");
 
         usernameTxtView.setText(txtFirstname+" "+txtLastname);
-
-//        if(prefs.getString("Pickup date",null).isEmpty()){
-//            dateTime.setText(txtFirstname+"no reservation on file");
-//        }
-//        else {
-//            dateTime.setText(prefs.getString("Pickup date",null));
-//        }
 
         btnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,11 +75,20 @@ public class HomeActivity extends BaseActivity {
             }
         });
 
+
+        if(datetime.equals("")) {
+            l.setVisibility(View.INVISIBLE);
+        }else{
+            dateTime.setText(datetime);
+        }
+
         btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentAccount = new Intent(HomeActivity.this,PreviewActivity.class);
-                startActivity(intentAccount);
+                    Intent intentAccount = new Intent(HomeActivity.this, PreviewActivity.class);
+                    startActivity(intentAccount);
+                    //this refreshes the page
+                    HomeActivity.this.finish();
             }
         });
 

@@ -28,8 +28,6 @@ public class PreviewActivity extends BaseActivity implements TakePicFragment.Pic
         TextView carType;
         Button btnReservation;
 
-
-
         private String fragPhotoFilePath = null;
         String txtUsername;
         static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -75,9 +73,6 @@ public class PreviewActivity extends BaseActivity implements TakePicFragment.Pic
                 startActivity(intentAccount);
             }
         });
-
-
-
     }
 
     //method below allows TakePicFragment to grab the username the user typed in

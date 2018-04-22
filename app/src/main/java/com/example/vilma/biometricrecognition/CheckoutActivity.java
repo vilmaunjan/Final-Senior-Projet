@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class CheckoutActivity extends BaseActivity implements TakePicFragment.PictureTakerListener {
+public class CheckoutActivity extends BaseActivity {
 
     Spinner spinnerPickupLocation;
     String pickupLocation;
@@ -54,7 +55,7 @@ public class CheckoutActivity extends BaseActivity implements TakePicFragment.Pi
     String txtUsername;
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
-    Button btnHome;
+    Button btnReserve;
 
 
     @Override
@@ -70,7 +71,7 @@ public class CheckoutActivity extends BaseActivity implements TakePicFragment.Pi
 
     private void initUI() {
 
-//        btnHome = findViewById(R.id.btnHome);
+        btnReserve = findViewById(R.id.btnReserve);
         //Used for location spinners
         adapterLocation = ArrayAdapter.createFromResource(this, R.array.city_arrays, android.R.layout.simple_spinner_item);
         adapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -193,71 +194,18 @@ public class CheckoutActivity extends BaseActivity implements TakePicFragment.Pi
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
-//        btnHome.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                storeRentalData();
-//                Intent intentAccount = new Intent(CheckoutActivity.this,HomeActivity.class);
-//                startActivity(intentAccount);
-//            }
-//        });
+        btnReserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                storeRentalData();
+                Intent intentAccount = new Intent(CheckoutActivity.this,HomeActivity.class);
+                startActivity(intentAccount);
+
+            }
+        });
 
     }
 
-    //method below allows TakePicFragment to grab the username the user typed in
-    @Override
-    public String getTxt(){
-        SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
-        txtUsername = prefs.getString("Username", null);
-        return txtUsername;
-    }
-    //grabs the photopath from the TakePicFragment and sets pic
-    @Override
-    public void picClick(String fragPhotoFilePath, String txtUsername) {
-        this.txtUsername = txtUsername;
-        this.fragPhotoFilePath = fragPhotoFilePath;
-        //Toast.makeText(this, "we did it", Toast.LENGTH_SHORT).show();
-    }
-
-    //I think this runs after the the picture is taken
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Toast.makeText(this, "Nice Pic!", Toast.LENGTH_LONG).show();
-            Intent intentAccount = new Intent(CheckoutActivity.this,ThisYouActivity.class);
-            startActivity(intentAccount);
-            storeRentalData();
-            uploadImage();
-        }
-    }
-
-    private void uploadImage(){
-        File file = new File(fragPhotoFilePath);
-            String target = txtUsername + "_" + file.getName();
-            String source = txtUsername + "_prime.jpg";
-
-          S3Upload upload = new S3Upload(this, fragPhotoFilePath, target);
-            upload.execute();
-
-        try {
-            upload.get();
-        } catch (InterruptedException e) {
-            Toast.makeText(this, "IM SORRY vilma", Toast.LENGTH_LONG).show();
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            Toast.makeText(this, "IM SORRY gabe", Toast.LENGTH_LONG).show();
-            e.printStackTrace();
-        }
-
-        //Stores first, last, and user name in the shared preferences
-        SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("PhotoPath", fragPhotoFilePath);
-        editor.putString("Target",target);
-        editor.putString("Source",source);
-        editor.commit();
-
-    }
 
     private void storeRentalData(){
 

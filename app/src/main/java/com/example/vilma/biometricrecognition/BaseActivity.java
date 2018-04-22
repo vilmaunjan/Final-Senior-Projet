@@ -82,8 +82,19 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_logout:
                 //To erase all shared pref values
-                //SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
-                //prefs.edit().clear().commit();
+                SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
+          /*      prefs.edit().remove("FirstName").commit();
+                prefs.edit().remove("LastName").commit();
+                prefs.edit().remove("Username").commit();
+                prefs.edit().remove("Pickup location").commit();
+                prefs.edit().remove("Dropoff location").commit();
+                prefs.edit().remove("Pickup date").commit();
+                prefs.edit().remove("Dropoff date").commit();
+                prefs.edit().remove("Car").commit();
+                prefs.edit().remove("Car").commit();
+                prefs.edit().remove("Similarity").commit();
+*/
+                 prefs.edit().clear().commit();
 
                 Intent intentLogout = new Intent(BaseActivity.this,LoginActivity.class);
                 startActivity(intentLogout);

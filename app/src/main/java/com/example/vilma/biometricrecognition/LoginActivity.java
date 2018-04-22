@@ -74,6 +74,7 @@ public class LoginActivity extends BaseActivity {
             public void onClick(View v) {
                 //this method does like pretty much all the work....like seriously-_-
                 tryToLogin(v);
+
             }
         });
     }
@@ -139,6 +140,7 @@ public class LoginActivity extends BaseActivity {
             editor.putString("LastName", txtLastname);
             editor.putString("Username", txtUsername);
             editor.commit();
+            LoginActivity.this.finish();
 
         }else{
             Toast.makeText(this, "Please enter a correct Username or Password!"

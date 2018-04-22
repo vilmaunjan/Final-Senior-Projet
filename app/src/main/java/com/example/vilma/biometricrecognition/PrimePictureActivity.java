@@ -26,29 +26,45 @@ import static android.content.Context.MODE_PRIVATE;
 public class PrimePictureActivity extends Fragment{
 
     private static final String TAG = AccountActivity.class.getSimpleName();
-    //private TextView lblSimilarity;
     private ImageView primePic;
-    String previewPhotoPath;
-    //Float mResult;
+    String primePhotoPath;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_primepicture, container, false);
-/*
-        lblSimilarity = (TextView) rootView.findViewById(R.id.lblPrimeSimilarity);
+
         primePic = (ImageView) rootView.findViewById(R.id.primePicture);
 
-        SharedPreferences prefs = rootView.getContext().getSharedPreferences("MyPref",MODE_PRIVATE);
-        mResult = prefs.getFloat("Similarity",-1);
-        previewPhotoPath = prefs.getString("PhotoPath",null);
+        SharedPreferences prefs = getActivity().getSharedPreferences("MyPref",MODE_PRIVATE);
+        primePhotoPath = prefs.getString("PrimePath",null);
+        setPic();
 
-        lblSimilarity.setText("Similarity of: "+mResult+"% ");*/
         return rootView;
     }
 
-    private void downloadPicture(){
+    private void setPic() {
+        // Get the dimensions of the View
+        int targetW = 210;
+        int targetH = 320;
 
+        // Get the dimensions of the bitmap
+        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+        bmOptions.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(primePhotoPath, bmOptions);
+        int photoW = bmOptions.outWidth;
+        int photoH = bmOptions.outHeight;
+
+        // Determine how much to scale down the image
+        int scaleFactor = Math.min(photoW/targetW, photoH/targetH);
+
+        // Decode the image file into a Bitmap sized to fill the View
+        bmOptions.inJustDecodeBounds = false;
+        bmOptions.inSampleSize = scaleFactor;
+        bmOptions.inPurgeable = true;
+
+        Bitmap bitmap = BitmapFactory.decodeFile(primePhotoPath, bmOptions);
+        primePic.setImageBitmap(bitmap);
     }
 
 

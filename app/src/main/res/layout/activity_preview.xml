@@ -31,47 +31,49 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:text="TextView"
                 android:textColor="@color/colorTextBlack"
-                android:text="TextView" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textView_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:text="TextView"
                 android:textColor="@color/colorTextBlack"
-                android:text="TextView" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textView_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:text="TextView"
                 android:textColor="@color/colorTextBlack"
-                android:text="TextView" />
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/textView_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:text="TextView"
                 android:textColor="@color/colorTextBlack"
-                android:text="TextView" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textView_5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:text="TextView"
                 android:textColor="@color/colorTextBlack"
-                android:text="TextView" />
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -80,7 +82,7 @@
 
                 <Button
                     android:id="@+id/btnNo"
-                    android:layout_width="254dp"
+                    android:layout_width="150dp"
                     android:layout_height="45dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
@@ -94,9 +96,9 @@
                     android:name="com.example.vilma.biometricrecognition.TakePicFragment"
                     android:layout_width="145dp"
                     android:layout_height="61dp"
-                    android:layout_marginTop="9dp"
                     android:layout_marginEnd="30dp"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="9dp"
                     tools:layout="@layout/take_pic_fragment" />
 
 

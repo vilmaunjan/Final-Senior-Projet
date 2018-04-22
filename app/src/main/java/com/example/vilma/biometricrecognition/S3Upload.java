@@ -2,6 +2,7 @@ package com.example.vilma.biometricrecognition;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
@@ -19,6 +20,8 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectResult;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by Vilma on 1/20/2018.
@@ -47,6 +50,10 @@ public class S3Upload extends AsyncTask<String,Void,String>{
 
         PutObjectRequest putRequest1 = new PutObjectRequest(bucket,upFileName,file);
         PutObjectResult response1 = s3Client.putObject(putRequest1);
+
+        SharedPreferences prefs = mContext.getSharedPreferences("MyPref",MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("PrimePath", filePath);
         return null;
     }
 

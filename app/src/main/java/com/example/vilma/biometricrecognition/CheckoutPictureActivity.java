@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -38,7 +39,7 @@ public class CheckoutPictureActivity extends Fragment{
         //lblSimilarity = (TextView) rootView.findViewById(R.id.lblCheckoutSimilarity);
         checkoutPic = (ImageView) rootView.findViewById(R.id.checkoutImage);
 
-        SharedPreferences prefs = rootView.getContext().getSharedPreferences("MyPref",MODE_PRIVATE);
+        SharedPreferences prefs = getActivity().getSharedPreferences("MyPref",MODE_PRIVATE);
         previewPhotoPath = prefs.getString("PhotoPath",null);
 
         setPic();
@@ -67,7 +68,15 @@ public class CheckoutPictureActivity extends Fragment{
         bmOptions.inPurgeable = true;
 
         Bitmap bitmap = BitmapFactory.decodeFile(previewPhotoPath, bmOptions);
+        bitmap = RotateBitmap(bitmap,270);
         checkoutPic.setImageBitmap(bitmap);
+    }
+
+    public static Bitmap RotateBitmap(Bitmap source, float angle)
+    {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(angle);
+        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);
     }
 
 
