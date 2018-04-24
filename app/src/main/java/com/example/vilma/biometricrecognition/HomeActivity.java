@@ -22,7 +22,7 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
  */
 public class HomeActivity extends BaseActivity {
 
-//    Button btnAccount;
+    Button btnAccount;
     Button btnCheckout;
     Button btnRent;
     TextView usernameTxtView;
@@ -45,18 +45,18 @@ public class HomeActivity extends BaseActivity {
     }
 
     private void initUI() {
-//        btnAccount = (Button) findViewById(R.id.btnAccount);
+        btnAccount = (Button) findViewById(R.id.btnAccount);
         btnCheckout = (Button) findViewById(R.id.btnCheckout);
         btnRent = (Button) findViewById(R.id.btnRent);
         usernameTxtView = findViewById(R.id.txtName);
         dateTime = findViewById(R.id.txtReservationDatetime);
         l = findViewById(R.id.reservationLayout);
 
-    //    Intent intentExtras = getIntent();
-    //    Bundle extraBundle = intentExtras.getExtras();
-    //    txtFirstname = extraBundle.getString("FirstName");
-    //    txtLastname = extraBundle.getString("LastName");
-     //   txtUsername = extraBundle.getString("Username");
+        //    Intent intentExtras = getIntent();
+        //    Bundle extraBundle = intentExtras.getExtras();
+        //    txtFirstname = extraBundle.getString("FirstName");
+        //    txtLastname = extraBundle.getString("LastName");
+        //   txtUsername = extraBundle.getString("Username");
 
         //Do this so that the user info can be stored for all activities, and so we dont need to pass from 1 activity to another
         SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
@@ -67,13 +67,13 @@ public class HomeActivity extends BaseActivity {
 
         usernameTxtView.setText(txtFirstname+" "+txtLastname);
 
-//        btnAccount.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intentAccount = new Intent(HomeActivity.this,AccountActivity.class);
-//                startActivity(intentAccount);
-//            }
-//        });
+        btnAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentAccount = new Intent(HomeActivity.this,AccountActivity.class);
+                startActivity(intentAccount);
+            }
+        });
 
 
         if(datetime.equals("")) {
@@ -85,10 +85,10 @@ public class HomeActivity extends BaseActivity {
         btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    Intent intentAccount = new Intent(HomeActivity.this, PreviewActivity.class);
-                    startActivity(intentAccount);
-                    //this refreshes the page
-                    HomeActivity.this.finish();
+                Intent intentAccount = new Intent(HomeActivity.this, PreviewActivity.class);
+                startActivity(intentAccount);
+                //this refreshes the page
+                HomeActivity.this.finish();
             }
         });
 
