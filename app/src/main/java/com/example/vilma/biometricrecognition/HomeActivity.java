@@ -75,7 +75,7 @@ public class HomeActivity extends BaseActivity {
             }
         });
 
-
+        
         if(datetime.equals("")) {
             l.setVisibility(View.INVISIBLE);
         }else{
