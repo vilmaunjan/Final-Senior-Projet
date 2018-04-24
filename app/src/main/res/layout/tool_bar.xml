@@ -10,4 +10,5 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:src="@drawable/hertz_logo" />
+
 </android.support.v7.widget.Toolbar>

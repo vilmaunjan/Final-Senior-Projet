@@ -168,6 +168,7 @@
                     android:text="UPCOMING RESERVATIONS"
                     android:textColor="@color/colorPrimaryDark" />
 
+
                 <TextView
                     android:id="@+id/txtReservationDatetime"
                     android:layout_width="match_parent"
