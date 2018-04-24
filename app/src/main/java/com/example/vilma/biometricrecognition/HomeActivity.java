@@ -22,7 +22,7 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
  */
 public class HomeActivity extends BaseActivity {
 
-    Button btnAccount;
+//    Button btnAccount;
     Button btnCheckout;
     Button btnRent;
     TextView usernameTxtView;
@@ -45,7 +45,7 @@ public class HomeActivity extends BaseActivity {
     }
 
     private void initUI() {
-        btnAccount = (Button) findViewById(R.id.btnAccount);
+//        btnAccount = (Button) findViewById(R.id.btnAccount);
         btnCheckout = (Button) findViewById(R.id.btnCheckout);
         btnRent = (Button) findViewById(R.id.btnRent);
         usernameTxtView = findViewById(R.id.txtName);
@@ -67,13 +67,13 @@ public class HomeActivity extends BaseActivity {
 
         usernameTxtView.setText(txtFirstname+" "+txtLastname);
 
-        btnAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentAccount = new Intent(HomeActivity.this,AccountActivity.class);
-                startActivity(intentAccount);
-            }
-        });
+//        btnAccount.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intentAccount = new Intent(HomeActivity.this,AccountActivity.class);
+//                startActivity(intentAccount);
+//            }
+//        });
 
 
         if(datetime.equals("")) {
