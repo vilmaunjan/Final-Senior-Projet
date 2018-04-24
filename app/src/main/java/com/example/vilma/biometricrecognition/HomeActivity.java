@@ -52,12 +52,11 @@ public class HomeActivity extends BaseActivity {
         dateTime = findViewById(R.id.txtReservationDatetime);
         l = findViewById(R.id.reservationLayout);
 
-
-    //    Intent intentExtras = getIntent();
-    //    Bundle extraBundle = intentExtras.getExtras();
-    //    txtFirstname = extraBundle.getString("FirstName");
-    //    txtLastname = extraBundle.getString("LastName");
-     //   txtUsername = extraBundle.getString("Username");
+        //    Intent intentExtras = getIntent();
+        //    Bundle extraBundle = intentExtras.getExtras();
+        //    txtFirstname = extraBundle.getString("FirstName");
+        //    txtLastname = extraBundle.getString("LastName");
+        //   txtUsername = extraBundle.getString("Username");
 
         //Do this so that the user info can be stored for all activities, and so we dont need to pass from 1 activity to another
         SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
@@ -76,7 +75,7 @@ public class HomeActivity extends BaseActivity {
             }
         });
 
-
+        
         if(datetime.equals("")) {
             l.setVisibility(View.INVISIBLE);
         }else{
@@ -86,10 +85,10 @@ public class HomeActivity extends BaseActivity {
         btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    Intent intentAccount = new Intent(HomeActivity.this, PreviewActivity.class);
-                    startActivity(intentAccount);
-                    //this refreshes the page
-                    HomeActivity.this.finish();
+                Intent intentAccount = new Intent(HomeActivity.this, PreviewActivity.class);
+                startActivity(intentAccount);
+                //this refreshes the page
+                HomeActivity.this.finish();
             }
         });
 
