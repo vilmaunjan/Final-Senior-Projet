@@ -101,9 +101,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 BaseActivity.this.finish();
                 break;
                 //Also need to reset all the user info and close all the activities opened, just leave login
-
         }
-
         return false;
     }
 }

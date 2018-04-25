@@ -18,7 +18,7 @@
         android:gravity="bottom"
         android:paddingBottom="10dp"
         android:paddingStart="10dp"
-        android:text="Reservation Preview"
+        android:text="Order Preview"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="30sp" />
@@ -39,6 +39,7 @@
                 android:id="@+id/textView_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:text="TextView"
                 android:textColor="@color/colorTextBlack"
                 android:textSize="16sp" />
@@ -47,6 +48,7 @@
                 android:id="@+id/textView_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:text="TextView"
                 android:textColor="@color/colorTextBlack"
                 android:textSize="16sp" />
@@ -55,6 +57,7 @@
                 android:id="@+id/textView_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:text="TextView"
                 android:textColor="@color/colorTextBlack"
                 android:textSize="16dp" />
@@ -63,6 +66,7 @@
                 android:id="@+id/textView_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:text="TextView"
                 android:textColor="@color/colorTextBlack"
                 android:textSize="16sp" />
@@ -71,6 +75,7 @@
                 android:id="@+id/textView_5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:text="TextView"
                 android:textColor="@color/colorTextBlack"
                 android:textSize="16sp" />
@@ -86,9 +91,10 @@
                     android:layout_height="45dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="50dp"
                     android:layout_weight="1"
                     android:background="@color/colorAccent"
-                    android:text="Return to Reservation page"
+                    android:text="Return"
                     android:textColor="@color/colorPrimaryDark" />
 
                 <fragment
@@ -98,7 +104,7 @@
                     android:layout_height="61dp"
                     android:layout_marginEnd="30dp"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="9dp"
+                    android:layout_marginTop="50dp"
                     tools:layout="@layout/take_pic_fragment" />
 
 

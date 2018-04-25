@@ -125,7 +125,7 @@ public class LoginActivity extends BaseActivity {
 
             Intent intentBundle = new Intent(LoginActivity.this,HomeActivity.class);
        /*     Bundle bundle = new Bundle();
-          
+
             bundle.putString("FirstName", txtFirstname);
             bundle.putString("LastName", txtLastname);
             bundle.putString("Username", txtUsername);

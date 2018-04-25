@@ -55,11 +55,11 @@ public class PreviewActivity extends BaseActivity implements TakePicFragment.Pic
         btnReservation = findViewById(R.id.btnNo);
 
         SharedPreferences prefs = this.getSharedPreferences("MyPref",MODE_PRIVATE);
-        pickUp_Location.setText("Your Pick-Up Location: "+prefs.getString("Pickup location",null));
-        dropOff_Location.setText("Your Drop-Off Location: "+prefs.getString("Dropoff location",null));
-        pickUp_Date.setText("Your Pick-Up Date: "+prefs.getString("Pickup date",null));
-        dropOff_Date.setText("Your Drop-Off Location: "+prefs.getString("Dropoff date",null));
-        carType.setText("Your Car Type: "+prefs.getString("Car",null));
+        pickUp_Location.setText("Pick-Up Location: "+prefs.getString("Pickup location",null));
+        dropOff_Location.setText("Drop-Off Location: "+prefs.getString("Dropoff location",null));
+        pickUp_Date.setText("Pick-Up Date: "+prefs.getString("Pickup date",null));
+        dropOff_Date.setText("Drop-Off Location: "+prefs.getString("Dropoff date",null));
+        carType.setText("Car Type: "+prefs.getString("Car",null));
 
 
         TakePicFragment fragment_obj = (TakePicFragment)getSupportFragmentManager().
